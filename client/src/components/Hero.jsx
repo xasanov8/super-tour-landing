@@ -34,9 +34,12 @@ export default function Hero() {
 
         <div className="hero__stats hero__stats--center" data-reveal="up">
           {h.stats.map((s, i) => (
-            <div className="hero__stat" key={i}>
-              <CountUpStat value={s.value} />
-              <span>{s.label}</span>
+            <div className="hero__stat" data-reveal="up" data-reveal-delay={i * 100} key={i}>
+              <span className="hero__stat-icon">
+                <Icon id={["ic-pin", "ic-family", "ic-shield"][i % 3]} />
+              </span>
+              <CountUpStat value={s.value} className="hero__stat-num" />
+              <span className="hero__stat-label">{s.label}</span>
             </div>
           ))}
         </div>

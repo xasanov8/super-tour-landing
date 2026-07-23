@@ -32,3 +32,23 @@ export const DESTINATION_IMAGES = [
   "/assets/images/destinations/vietnam.jpg",
   "/assets/images/destinations/maldives.jpg",
 ];
+
+// Same order as hotDeals items in translations.js (Kyrgyzstan, Sharjah/UAE,
+// Qatar, Thailand, Kemer/Turkey) — a second, smaller photo set for the
+// horizontal "hot deals" strip so it doesn't just repeat the grid above.
+export const HOT_DEAL_IMAGES = [
+  "/assets/images/destinations/kyrgyzstan.jpg",
+  "/assets/images/destinations/uae.jpg",
+  "/assets/images/destinations/qatar.jpg",
+  "/assets/images/destinations/thailand.jpg",
+  "/assets/images/destinations/turkey-antalya.jpg",
+];
+
+// Real, verified follower/subscriber counts (checked directly on the
+// profiles — see project notes) — used in the "follow us" section instead
+// of invented social-proof numbers.
+export const SOCIAL_STATS = {
+  instagramFollowers: "9 300+",
+  instagramPosts: "780+",
+  telegramSubscribers: "600+",
+};

@@ -28,6 +28,70 @@ const destinationItems = {
   ],
 };
 
+const hotDeals = {
+  ru: [
+    { country: "Кыргызстан", tag: "Иссык-Куль и горы", price: "от 459$" },
+    { country: "Шарджа", tag: "Компактный эмират (ОАЭ)", price: "от 505$" },
+    { country: "Катар", tag: "Доха за выходные", price: "от 504$" },
+    { country: "Таиланд", tag: "Пхукет", price: "от 601€" },
+    { country: "Кемер", tag: "Пляжный отдых (Турция)", price: "от 620€" },
+  ],
+  uz: [
+    { country: "Qirg'iziston", tag: "Issiqko'l va tog'lar", price: "459$ dan" },
+    { country: "Sharja", tag: "Ixcham amirlik (BAA)", price: "505$ dan" },
+    { country: "Qatar", tag: "Dam olish kunlariga Doha", price: "504$ dan" },
+    { country: "Tailand", tag: "Fukuet", price: "601€ dan" },
+    { country: "Kemer", tag: "Plyaj dam olish (Turkiya)", price: "620€ dan" },
+  ],
+};
+
+const faqItems = {
+  ru: [
+    {
+      q: "Сколько стоит тур?",
+      a: "Цены «от» указаны на человека при двухместном размещении. Точная стоимость зависит от даты вылета, отеля и сезона — её уточнит менеджер после заявки.",
+    },
+    {
+      q: "Что входит в стоимость?",
+      a: "Авиаперелёт, проживание, трансфер и медицинская страховка — одним пакетом. В части туров дополнительно включены экскурсии, детали есть в описании направления.",
+    },
+    {
+      q: "Как забронировать тур?",
+      a: "Напишите в Telegram или позвоните по телефону — менеджер поможет подобрать вариант под ваш бюджет и оформит бронирование.",
+    },
+    {
+      q: "Можно ли лететь семьёй или большой компанией?",
+      a: "Да, программы подходят для семей, друзей и родителей — подберём вариант на любой возраст и бюджет.",
+    },
+    {
+      q: "Нужна ли виза?",
+      a: "Зависит от направления. Менеджер подскажет, нужна ли виза для выбранной страны, и поможет с оформлением при необходимости.",
+    },
+  ],
+  uz: [
+    {
+      q: "Tur qancha turadi?",
+      a: "«dan» narxlar 1 kishi uchun, ikki kishilik xonada joylashishda ko'rsatilgan. Aniq narx parvoz sanasi, mehmonxona va mavsumga bog'liq — so'rovdan so'ng menejer aniqlashtiradi.",
+    },
+    {
+      q: "Narxga nima kiradi?",
+      a: "Aviachipta, mehmonxona, transfer va tibbiy sug'urta — bitta paketda. Ba'zi turlarga qo'shimcha ekskursiyalar ham kiritilgan, tafsilotlar yo'nalish tavsifida ko'rsatilgan.",
+    },
+    {
+      q: "Turni qanday bron qilaman?",
+      a: "Telegram orqali yozing yoki qo'ng'iroq qiling — menejer byudjetingizga mos variantni tanlab, bronni rasmiylashtiradi.",
+    },
+    {
+      q: "Oila yoki katta guruh bilan borsa bo'ladimi?",
+      a: "Ha, dasturlar oilalar, do'stlar va ota-onalar uchun mos — har qanday yosh va byudjetga variant topamiz.",
+    },
+    {
+      q: "Viza kerakmi?",
+      a: "Yo'nalishga bog'liq. Menejer tanlangan davlat uchun viza kerak-kerakmasligini aytadi va zarur bo'lsa rasmiylashtirishga yordam beradi.",
+    },
+  ],
+};
+
 const whyItems = {
   ru: [
     { icon: "ic-shield", title: "Надёжно и без риска", text: "Подбираем тур, который точно вам подходит — никакой спешки и рискованных решений." },
@@ -99,6 +163,13 @@ export const translations = {
       messageAny: "Здравствуйте! Подскажите, пожалуйста, варианты туров.",
       messageFor: (dest, people) => `Здравствуйте! Хочу тур в ${dest} на ${people} чел.`,
     },
+    hotDeals: {
+      eyebrow: "Горящие туры",
+      heading: "Лучшие цены этой недели",
+      sub: "Подборка обновляется по нашему Telegram-каналу — успейте забронировать по текущей цене.",
+      hitLabel: "Хит",
+      items: hotDeals.ru,
+    },
     why: {
       eyebrow: "Почему мы",
       heading: "Путешествие без лишних забот",
@@ -109,6 +180,20 @@ export const translations = {
       eyebrow: "Как это работает",
       heading: "4 шага до отпуска",
       steps: howSteps.ru,
+    },
+    faq: {
+      eyebrow: "Вопросы и ответы",
+      heading: "Частые вопросы",
+      items: faqItems.ru,
+    },
+    social: {
+      eyebrow: "Мы в соцсетях",
+      heading: "Следите за горящими турами",
+      sub: "Новые направления, скидки и отзывы туристов публикуем каждый день.",
+      instagramLabel: "подписчиков в Instagram",
+      telegramLabel: "подписчиков в Telegram",
+      ctaInstagram: "Подписаться",
+      ctaTelegram: "Подписаться",
     },
     promo: {
       heading: "Готовы к путешествию?",
@@ -160,6 +245,13 @@ export const translations = {
       messageAny: "Assalomu alaykum! Tur variantlarini aytib bera olasizmi?",
       messageFor: (dest, people) => `Assalomu alaykum! Menga ${dest} yo'nalishi bo'yicha ${people} kishiga tur kerak edi.`,
     },
+    hotDeals: {
+      eyebrow: "Qaynoq takliflar",
+      heading: "Shu haftaning eng yaxshi narxlari",
+      sub: "To'plam Telegram kanalimiz asosida yangilanadi — joriy narxda bron qilishga ulguring.",
+      hitLabel: "Xit",
+      items: hotDeals.uz,
+    },
     why: {
       eyebrow: "Nega aynan biz",
       heading: "Ortiqcha tashvishsiz sayohat",
@@ -170,6 +262,20 @@ export const translations = {
       eyebrow: "Qanday ishlaydi",
       heading: "Ta'tilgacha 4 qadam",
       steps: howSteps.uz,
+    },
+    faq: {
+      eyebrow: "Savol-javob",
+      heading: "Ko'p beriladigan savollar",
+      items: faqItems.uz,
+    },
+    social: {
+      eyebrow: "Ijtimoiy tarmoqlarda",
+      heading: "Qaynoq turlarni kuzatib boring",
+      sub: "Har kuni yangi yo'nalishlar, chegirmalar va sayohatchilar fikrlarini e'lon qilamiz.",
+      instagramLabel: "Instagram obunachi",
+      telegramLabel: "Telegram obunachi",
+      ctaInstagram: "Obuna bo'lish",
+      ctaTelegram: "Obuna bo'lish",
     },
     promo: {
       heading: "Sayohatga tayyormisiz?",

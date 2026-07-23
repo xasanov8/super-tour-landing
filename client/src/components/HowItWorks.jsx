@@ -13,9 +13,10 @@ export default function HowItWorks() {
           <h2 style={{ color: "#fff" }}>{how.heading}</h2>
         </div>
 
-        <div className="how__steps">
+        <div className="how__timeline">
+          <div className="how__line" aria-hidden="true" />
           {how.steps.map((step, i) => (
-            <div className="how-step" data-reveal="up" data-reveal-delay={i * 100} key={i}>
+            <div className="how-step" data-reveal="up" data-reveal-delay={i * 120} key={i}>
               <span className="how-step__num">
                 {i === how.steps.length - 1 ? <Icon id="ic-check" className="ic ic-sm" /> : i + 1}
               </span>

@@ -45,3 +45,58 @@ export function scrollToId(id, offset = 84) {
   const targetY = rect.top + (window.scrollY || document.documentElement.scrollTop) - offset;
   smoothScrollTo(targetY);
 }
+
+// One in-flight animation per scrollable element (e.g. the hot-deals strip),
+// so clicking an arrow again mid-animation smoothly retargets instead of
+// stacking competing rAF loops.
+const activeHRaf = new WeakMap();
+
+/**
+ * Same manual rAF approach as smoothScrollTo, but for an element's
+ * horizontal scrollLeft.
+ *
+ * CSS scroll-snap (used on horizontally-scrolling strips like hot-deals)
+ * fights a JS-driven scrollLeft animation — the browser keeps trying to
+ * snap the track back to the nearest card on every intermediate frame,
+ * which turned the glide into a stuttery tug-of-war. Suspending
+ * scroll-snap-type for the duration of our own animation, then restoring
+ * it once we land, avoids that.
+ */
+export function smoothHorizontalScrollTo(el, targetX, duration) {
+  const clampedTarget = Math.max(0, Math.min(targetX, el.scrollWidth - el.clientWidth));
+  const startX = el.scrollLeft;
+  const diff = clampedTarget - startX;
+
+  const existing = activeHRaf.get(el);
+  if (existing) {
+    cancelAnimationFrame(existing.raf);
+  } else {
+    el.dataset.prevScrollSnap = el.style.scrollSnapType || "";
+  }
+  el.style.scrollSnapType = "none";
+
+  if (Math.abs(diff) < 2) {
+    el.style.scrollSnapType = el.dataset.prevScrollSnap;
+    delete el.dataset.prevScrollSnap;
+    activeHRaf.delete(el);
+    return;
+  }
+
+  const dur = duration ?? Math.min(900, Math.max(400, Math.abs(diff) * 0.6));
+  const startTime = performance.now();
+
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / dur, 1);
+    const eased = easeInOutCubic(progress);
+    el.scrollLeft = startX + diff * eased;
+    if (progress < 1) {
+      activeHRaf.set(el, { raf: requestAnimationFrame(step) });
+    } else {
+      el.style.scrollSnapType = el.dataset.prevScrollSnap;
+      delete el.dataset.prevScrollSnap;
+      activeHRaf.delete(el);
+    }
+  }
+  activeHRaf.set(el, { raf: requestAnimationFrame(step) });
+}
