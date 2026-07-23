@@ -203,7 +203,10 @@ section{ padding: 96px 0; }
    switch to the off-canvas burger menu well before that happens. */
 @media (max-width: 1140px){
   .nav__links{
-    position:fixed; top:0; right:0; z-index:1; height:100vh; width:min(320px,80vw);
+    /* must outrank .nav__backdrop's z-index:1 — equal values would fall back
+       to DOM order, and the backdrop comes later in the markup, which let
+       its pointer-events:auto silently swallow clicks meant for these links */
+    position:fixed; top:0; right:0; z-index:2; height:100vh; width:min(320px,80vw);
     background:#fff; flex-direction:column; align-items:flex-start; justify-content:flex-start;
     padding: 100px 32px 32px; gap:22px; box-shadow: -20px 0 50px rgba(18,34,64,0.18);
     transform: translateX(100%); transition: transform .4s var(--ease-soft);
