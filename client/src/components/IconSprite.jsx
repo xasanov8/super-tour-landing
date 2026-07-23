@@ -3,8 +3,10 @@ export default function IconSprite() {
     <svg className="sprite-defs" aria-hidden="true" focusable="false">
       <defs>
         <symbol id="ic-plane" viewBox="0 0 24 24">
-          <path d="M22 2L11 13" />
-          <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+          {/* recentered so the shape's visual (mass) center sits at 12,12 —
+              the original Feather-style coordinates read as shifted up-right */}
+          <path d="M18.1 5.9L9.9 14.1" />
+          <path d="M18.1 5.9L12.9 20.9L9.9 14.1L3.1 11.1Z" />
         </symbol>
         <symbol id="ic-shield" viewBox="0 0 24 24">
           <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
@@ -45,11 +47,10 @@ export default function IconSprite() {
         </symbol>
         <symbol id="ic-telegram" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9" />
-          <path
-            d="M17.4 6.9L6.2 11.2c-.5.2-.5.9 0 1.1l3.1 1.1 1.1 3.5c.2.5.9.6 1.2.1l1.6-2.2 2.9 2.1c.4.3 1 .1 1.1-.4l1.8-9.1c.1-.6-.5-1-1.1-.8z"
-            fill="currentColor"
-            stroke="none"
-          />
+          {/* paper-plane silhouette — shifted so its visual (mass) center
+              sits at 12,12, not just its bounding-box center, since a
+              triangular shape's bbox center reads as visibly off-balance */}
+          <path d="M16.9 7.1L12.7 19.1L10.3 13.7L4.9 11.3Z" fill="currentColor" stroke="none" />
         </symbol>
         <symbol id="ic-instagram" viewBox="0 0 24 24">
           <rect x="3" y="3" width="18" height="18" rx="5" />

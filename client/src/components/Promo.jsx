@@ -10,7 +10,7 @@ export default function Promo() {
     <section className="promo" id="aloqa">
       <div className="container">
         <div className="promo__inner" data-reveal="up">
-          <Icon id="ic-plane" className="promo__plane" />
+          <Icon id="ic-plane" className="ic promo__plane" />
           <div className="promo__text">
             <span className="promo__badge">
               <Icon id="ic-plane" />

@@ -1,11 +1,12 @@
 import { useLanguage } from "../i18n/LanguageContext.jsx";
-import { PHONE_TEL, TELEGRAM_BOOKING_URL } from "../constants.js";
 import Icon from "./Icon.jsx";
+import HeroCarousel from "./HeroCarousel.jsx";
+import SearchWidget from "./SearchWidget.jsx";
+import CountUpStat from "./CountUpStat.jsx";
 
 export default function Hero() {
   const { t } = useLanguage();
   const h = t.hero;
-  const routes = t.destinations.items.slice(0, 4);
 
   return (
     <section className="hero" id="top">
@@ -15,8 +16,8 @@ export default function Hero() {
         <div className="hero__rays"></div>
       </div>
 
-      <div className="container hero__grid">
-        <div className="hero__text" data-reveal="left">
+      <div className="container">
+        <div className="hero__text hero__text--center" data-reveal="up">
           <span className="eyebrow eyebrow--light">
             <Icon id="ic-shield" className="ic ic-xs" /> {h.eyebrow}
           </span>
@@ -25,71 +26,19 @@ export default function Hero() {
             <span className="accent">{h.titleAccent}</span>
           </h1>
           <p className="hero__lead">{h.lead}</p>
-
-          <div className="hero__ctas">
-            <a href={TELEGRAM_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
-              <Icon id="ic-telegram" /> {h.ctaPrimary}
-            </a>
-            <a href={`tel:${PHONE_TEL}`} className="btn btn--ghost-light">
-              <Icon id="ic-phone" /> {h.ctaSecondary}
-            </a>
-          </div>
-
-          <div className="hero__stats">
-            {h.stats.map((s, i) => (
-              <div className="hero__stat" key={i}>
-                <strong>{s.value}</strong>
-                <span>{s.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
-        <div className="hero__panel" data-reveal="right" data-reveal-delay="150">
-          <div className="hero__badge-float hero__badge-float--1">
-            <span className="icon-badge icon-badge--sm icon-badge--gold">
-              <Icon id="ic-medical" className="ic-sm" />
-            </span>
-            <div>
-              <strong>{t.why.items[3].title}</strong>
-            </div>
-          </div>
+        <SearchWidget />
 
-          <div className="hero__card">
-            <div className="hero__card-head">
-              <span className="icon-badge">
-                <Icon id="ic-plane" />
-              </span>
-              <div>
-                <strong>{t.destinations.eyebrow}</strong>
-                <span>{t.destinations.heading}</span>
-              </div>
-            </div>
-            <div className="hero__route-list">
-              {routes.map((r, i) => (
-                <div className="hero__route" key={i}>
-                  <span className="icon-badge icon-badge--gold">
-                    <Icon id={r.icon} />
-                  </span>
-                  <div>
-                    <p className="hero__route-name">{r.country}</p>
-                    <p className="hero__route-desc">{r.tag}</p>
-                  </div>
-                  <span className="hero__route-price">{r.price}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <HeroCarousel />
 
-          <div className="hero__badge-float hero__badge-float--2">
-            <span className="icon-badge icon-badge--sm">
-              <Icon id="ic-shield" className="ic-sm" />
-            </span>
-            <div>
-              <strong>24/7</strong>
-              <span>{h.stats[2].label}</span>
+        <div className="hero__stats hero__stats--center" data-reveal="up">
+          {h.stats.map((s, i) => (
+            <div className="hero__stat" key={i}>
+              <CountUpStat value={s.value} />
+              <span>{s.label}</span>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

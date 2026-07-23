@@ -17,7 +17,7 @@ export default function HowItWorks() {
           {how.steps.map((step, i) => (
             <div className="how-step" data-reveal="up" data-reveal-delay={i * 100} key={i}>
               <span className="how-step__num">
-                {i === how.steps.length - 1 ? <Icon id="ic-check" className="ic-sm" /> : i + 1}
+                {i === how.steps.length - 1 ? <Icon id="ic-check" className="ic ic-sm" /> : i + 1}
               </span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
