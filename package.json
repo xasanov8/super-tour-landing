@@ -1,0 +1,13 @@
+{
+  "name": "super-tour-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Super Tour (super-tour.uz) landing page — React (Vite) client + Node.js (Express) server.",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "npm run build && npm start --prefix server"
+  }
+}
